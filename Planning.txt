@@ -1,0 +1,38 @@
+habit:
+habit name
+Date completed:
+Timeframe: 
+	if weekly, display 7 squares, green if success, red for failing
+	if month: shows how many times you did it out of the date of the months, also show the remaining day to finish 
+
+
+habit = {
+  habitName: "Exercise", // Replace with your habit name
+  startDate: "2023-09-18", // Replace with the start date
+  rep: repeatition per day;
+  daysCompleted: {
+    "2023-09-18": true,  // Replace with the actual date and initial completion status
+    "2023-09-19": false, // Replace with the actual date and initial completion status
+    // Add more dates and completion status as needed
+	OR I just add the day complete into this array instead of including both fail and pass day
+  },	
+markCompleted(date) {
+    this.daysCompleted[date] = true;
+  },
+markIncomplete(date) {
+    this.daysCompleted[date] = false;
+  },
+isCompleted(date) {
+    return this.daysCompleted[date] || false;
+  },
+
+habits are the array of all habit
+
+To do tracklist:
+
+A list that show progress in the current week 
+A list that show progress in the pass week
+A list that show progress in the pass month -- will need update in the future, maybe after learning NodeJs
+add streak
+
+*** Begin of new week, or Monday, will delete the data from two weeks ago
