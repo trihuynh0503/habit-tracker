@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="side-bar">
+            <div class="title"> 
+                <img src="./assets/check-list.png" alt="">
+                <h1>Habit Tracker</h1>
+            </div>
+            
+            <form class="add-habit">
+                <h3>Add Habit</h3>
+                <label>
+                    Enter Habit Name 
+                    <input type="text" name="habit" maxlength="30" required>
+                </label>
+                <label>
+                    Repetion(s) per day
+                    <input type="number" name="reps" min="1" required>
+                </label>
+                <button type="submit">+ Add Habit</button>
+            </form>
+            
+        </div>
+        <!--Lists of habits tracking the current week-->
+        <div class="contents">
+            <div class="check-list">
+                <h2>Checklist</h2>
+                <p>Check the habit that you completed today</p>
+                <ul class="habits">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+            <div class="content-border"></div>
+            <h2>Current Week Progression</h2>
+            <div class="currentWeek">
+
+            </div>
+            <div class="content-border"></div>
+            <!--Lists of habits progress from last week-->
+            <div class="lastWeek">
+                <h2>Last Week Records</h2>
+                <p>Will be Update Soon</p>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+<footer>
+    <a href="https://www.flaticon.com/free-icons/evaluation" title="evaluation icons">Evaluation icons created by Freepik - Flaticon</a>
+</footer>
+</html>
+

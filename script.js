@@ -51,13 +51,13 @@ function addHabit(e){
 
 //reset actualReps to 0 each day
 function resetActualRepsIfNeeded(habitsList) {
-    if(lastUpdate !== today.toISOString().split('T')[0]) {
+    if(lastUpdate !== formatToday) {
         habitsList.forEach((habit) =>  {
             habit.actualReps = 0;
             habit.completed = false;
         });
         localStorage.setItem("habits", JSON.stringify(habits));
-        lastUpdate = today.toISOString().split('T')[0];
+        lastUpdate = formatToday;
         localStorage.setItem("Last Update", JSON.stringify(lastUpdate));
     }
 }
@@ -88,42 +88,43 @@ function completeInclude(habit, date) {
 
 //Update the current week progress
 function addCurrentProgress(habits=[]) {
-    
-    currentProgress.innerHTML = 
-    `
-    <ul class="progressColName">
-    <li>Habits</li>
-    <li>Mon</li>
-    <li>Tue</li>
-    <li>Wed</li>
-    <li>Thu</li>
-    <li>Fri</li>
-    <li>Sat</li>
-    <li>Sun</li>
-    </ul> `
-    currentProgress.innerHTML += habits.map((habit, i) => {
-        let mon = new Date(mondayDate);
-        mon.setDate(mon.getDate() + 2);
-        let wed = mon;
-        console.log("wed: " + wed);
-        const wedClass = completeInclude(habit, wed)? "green" : "red";
-        mon.setDate(mon.getDate() + 1);
-        let thu = mon;
-        const thuClass = completeInclude(habit, thu)? "green" : "red";
-        console.log("thu: " + thu);
-        return `
-        <ul class="habitProgress">
-        <li>${habit.name}</li>
-        <li class="green"></li>
-        <li class="red"></li>
-        <li class=${wedClass}></li>
-        <li class=${thuClass}></li>
-        <li class="grey"></li>
-        <li class="red"></li>
-        <li class="red"></li>
-    </ul>
+    if(habits.length > 0) {
+        currentProgress.innerHTML = 
         `
-    }).join(""); 
+        <ul class="progressColName">
+        <li>Habits</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>
+        <li>Sun</li>
+        </ul> `
+        currentProgress.innerHTML += habits.map((habit, i) => {
+            let mon = new Date(mondayDate);
+            const weekDay = [];
+            weekDay.push(completeInclude(habit, mon)? "green" : "red");
+            for(let i = 1; i < 7; ++i) {
+                mon.setDate(mon.getDate() + 1);
+                weekDay.push(completeInclude(habit, mon)? "green" : "red");
+            }
+            return `
+            <ul class="habitProgress">
+            <li>${habit.name}</li>
+            <li class=${weekDay[0]}></li>
+            <li class=${weekDay[1]}></li>
+            <li class=${weekDay[2]}></li>
+            <li class=${weekDay[3]}></li>
+            <li class=${weekDay[4]}></li>
+            <li class=${weekDay[5]}></li>
+            <li class=${weekDay[6]}></li>
+        </ul>
+            `
+        }).join(""); 
+    }
+    else currentProgress.innerHTML = "<p>Such emptiness...</p>";
+  
 }
 
 

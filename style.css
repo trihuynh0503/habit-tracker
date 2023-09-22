@@ -4,15 +4,41 @@
 }
 body {
     margin: 0px;
+    background-color: black;
+}
+nav {
+    position: sticky;
+    height: auto;
+    background-color: #FF8601;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.title {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.title > h1 {
+    margin:0;
+}
+.title > img {
+    height: 2.5rem;
 }
 .container {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 300px 900px 1fr;
 }
 .side-bar {
-    height: 100vh;
     background-color: #FF8601;
     padding: 10px;
+    height: 100vh;
+    top: 0;
+    position: sticky;
+    align-self: start;
 }
 .add-habit {
     display: flex;
