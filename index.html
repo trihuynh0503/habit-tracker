@@ -10,7 +10,11 @@
 <body>
     <div class="container">
         <div class="side-bar">
-            <h1 style="margin-top: 0px">Habit Tracker</h1>
+            <div class="title"> 
+                <img src="./assets/check-list.png" alt="">
+                <h1>Habit Tracker</h1>
+            </div>
+            
             <form class="add-habit">
                 <h3>Add Habit</h3>
                 <label>
@@ -21,7 +25,7 @@
                     Repetion(s) per day
                     <input type="number" name="reps" min="1" required>
                 </label>
-                <input type="submit" value="+ Add Habit" />
+                <button type="submit">+ Add Habit</button>
             </form>
             
         </div>
@@ -35,25 +39,22 @@
                 </ul>
             </div>
             <div class="content-border"></div>
+            <h2>Current Week Progression</h2>
             <div class="currentWeek">
-                <h2>Current Week Progression</h2>
-                <p>Such emptiness...</p>
 
             </div>
             <div class="content-border"></div>
-
+            <!--Lists of habits progress from last week-->
             <div class="lastWeek">
                 <h2>Last Week Records</h2>
-                <p>Such emptiness...</p>
+                <p>Will be Update Soon</p>
             </div>
         </div>
-        
-        <!--Lists of habits progress from last week-->
-
     </div>
-    
-
     <script src="./script.js"></script>
 </body>
+<footer>
+    <a href="https://www.flaticon.com/free-icons/evaluation" title="evaluation icons">Evaluation icons created by Freepik - Flaticon</a>
+</footer>
 </html>
 
